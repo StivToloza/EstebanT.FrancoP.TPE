@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 16:51:07
+-- Tiempo de generación: 18-10-2023 a las 02:24:24
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -40,7 +40,9 @@ CREATE TABLE `cias` (
 --
 
 INSERT INTO `cias` (`id_Cia`, `nombre_cia`, `direccion_cia`, `contacto`, `email`) VALUES
-(1, 'Holando', 'Belgrano 999', 154778877, 'holando@cia.com');
+(1, 'Holando', 'Belgrano 999', 154778877, 'holando@cia.com'),
+(2, 'Zurich', 'Estrada 50', 1548877555, 'zurich@cia.com'),
+(3, 'El Loco', 'Locura 666', 15995115, 'elloco@cia.com');
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,9 @@ CREATE TABLE `inspectores` (
 --
 
 INSERT INTO `inspectores` (`id_inspector`, `nombre`, `apellido`, `contacto`, `email`, `localidad`) VALUES
-(1, 'Pedro', 'Grando', 154445544, 'pedro@insp.com', 'Tandil');
+(1, 'Pedro', 'Grando', 154445544, 'pedro@insp.com', 'Tandil'),
+(4, 'Bueno', 'Denoche', 558855, 'buenoD@insp.com', 'Azul'),
+(5, 'Malo', 'Dedia', 5544, 'maloD@insp.com', 'Bahia Blanco');
 
 -- --------------------------------------------------------
 
@@ -83,8 +87,10 @@ CREATE TABLE `liquidadores` (
 --
 
 INSERT INTO `liquidadores` (`id_liquidador`, `nombre`, `apellido`, `contacto`, `email`) VALUES
+(0, 'Nestor', 'Salvi', 15421321, 'nestor@liqui.com'),
 (1, 'Franco', 'Procopio', 154345738, 'francoP@liqui.com'),
-(2, 'Juan', 'Perez', 112255, 'juanperez@liqui.com');
+(2, 'Juan', 'Perez', 112255, 'juanperez@liqui.com'),
+(3, 'Laura', 'Ara', 154885522, 'lauraA@liqui.com');
 
 -- --------------------------------------------------------
 
@@ -96,7 +102,7 @@ CREATE TABLE `siniestros` (
   `id_Stro` int(8) NOT NULL,
   `id_Cia` int(8) NOT NULL,
   `tipo_Stro` varchar(30) NOT NULL,
-  `nombre:_Asegurado` varchar(30) NOT NULL,
+  `nombre_Asegurado` varchar(30) NOT NULL,
   `apellido_Asegurado` varchar(30) NOT NULL,
   `fecha_Stro` date NOT NULL,
   `direccion_Aseg` varchar(40) NOT NULL,
@@ -110,8 +116,30 @@ CREATE TABLE `siniestros` (
 -- Volcado de datos para la tabla `siniestros`
 --
 
-INSERT INTO `siniestros` (`id_Stro`, `id_Cia`, `tipo_Stro`, `nombre:_Asegurado`, `apellido_Asegurado`, `fecha_Stro`, `direccion_Aseg`, `localidad`, `contacto_Asegurado`, `id_liquidador`, `id_inspector`) VALUES
-(1, 1, 'Incendio', 'Hector', 'Garcia', '2023-10-01', 'Iraola 135', 'Tandil', 154669988, 1, 1);
+INSERT INTO `siniestros` (`id_Stro`, `id_Cia`, `tipo_Stro`, `nombre_Asegurado`, `apellido_Asegurado`, `fecha_Stro`, `direccion_Aseg`, `localidad`, `contacto_Asegurado`, `id_liquidador`, `id_inspector`) VALUES
+(1, 1, 'Incendio', 'Hector', 'Garcia', '2023-10-01', 'Iraola 135', 'Tandil', 154669988, 1, 1),
+(2, 1, 'Robo', 'Santiago', 'Lopez', '2023-10-02', 'Iraola 135', 'Tandil', 114777, 3, 1),
+(3, 2, 'Vendaval', 'Karlitos', 'Conk', '2023-09-03', 'Lejos 555', 'Azul', 14741, 1, 4),
+(4, 3, 'Incendio', 'Olaf', 'Fariza', '2023-10-15', 'Porahi 58', 'Bahia Blanca', 44788, 3, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `email`, `password`) VALUES
+(1, 'webadmin', '$2y$10$e9OwoSC95p4C18OYukkb9e8ojfEJd/sC0dMH7yVr20diiDrc9GHpq');
 
 --
 -- Índices para tablas volcadas
@@ -145,6 +173,12 @@ ALTER TABLE `siniestros`
   ADD KEY `fk_id_cia` (`id_Cia`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -152,7 +186,13 @@ ALTER TABLE `siniestros`
 -- AUTO_INCREMENT de la tabla `siniestros`
 --
 ALTER TABLE `siniestros`
-  MODIFY `id_Stro` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_Stro` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
