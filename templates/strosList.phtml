@@ -1,0 +1,21 @@
+<?php require 'templates/header.phtml' ?>
+
+<h1>Siniestros</h1>
+<p>En la siguiente tabla se muestra los siniestros con sus respectivos datos</p>
+<table>
+    <thead>
+        <th>Numero de Siniestro</th>
+        <th>Tipo de siniestro</th>
+        <th>Fecha de siniestro</th>
+        
+    </thead>
+    <tbody>
+        <?php foreach ($stros as $stro): ?>
+            <tr>
+                <td><?= $stro->id_Stro ?></td>
+                <td><?= $stro->tipo_Stro ?></td>
+                <td><?= $stro->fecha_Stro ?></td>
+                <td><a href="detalleStro/<?php $stro->id_Stro?>" type="button" class="btn btn-danger ml-auto">Detalles</a></td>
+            </tr>
+        <?php endforeach?>
+<?php require 'templates/formStros.phtml' ?> 

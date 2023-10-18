@@ -1,0 +1,20 @@
+<?php require 'templates/header.phtml' ?>
+<?php require 'templates/form_liquidadores.phtml' ?>
+<h1>Liquiladores</h1>
+<p>En la siguiente tabla se muestra los liquiladores con sus respectivos datos</p>
+<table>
+    <thead>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Contacto</th>
+        <th>Email</th>
+    </thead>
+    <tbody>
+        <?php foreach ($liquidadores as $liquidador): ?>
+            <tr>
+                <td><?= $liquidador->nombre ?></td>
+                <td><?= $liquidador->apellido ?></td>
+                <td><?= $liquidador->contacto ?></td>
+                <td><?= $liquidador->email ?></td>
+            </tr>
+        <?php endforeach?>
