@@ -8,3 +8,6 @@ descripcion: Es una liquidadora siniestros, esta misma trabaja con varias compan
 
 
 Diagrama de BBDD: https://lucid.app/lucidchart/6cbb9ccb-a42c-4a28-aed6-f4ec8580f247/edit?invitationId=inv_3f874328-c6d5-4659-87d5-f193aa5fbd1d
+
+
+Hola la segunda entrega, la parte esta actualizada en una rama llamada master, porque lo subimos con git y no logramos dejarlo subido en la main, aviso asi se puede ver mejor
